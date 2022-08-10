@@ -41,7 +41,7 @@ import {
               <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
                 <WrapItem>
                   <Box>
-                    <Heading>Contact</Heading>
+                    <Heading>Buy SB Token</Heading>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="gray.500">
                       Fill up the form below to contact
                     </Text>
@@ -113,18 +113,16 @@ import {
                       <VStack spacing={5}>
                         <FormControl id="name">
                           <FormLabel>Number of tokens</FormLabel>
-                          <InputGroup borderColor="#E0E1E7">
-                            <InputLeftElement
-                              pointerEvents="none"
-                              children={<BsPerson color="gray.800" />}
-                            />
-                            <Input type="text" size="md" />
-                          </InputGroup>
+                            <Input type="number" size="md" placeholder='ex.. 500' min="500" max="25000" />
+                  
                         </FormControl>
                         <FormControl id="name" float="right">
                           <Button
+                            type='submit'
                             variant="solid"
                             bg="#0D74FF"
+                            size="lg"
+                            width="100%"
                             color="white"
                             _hover={{}}>
                             Buy Token
