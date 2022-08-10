@@ -16,6 +16,7 @@ import {
     InputGroup,
     InputLeftElement,
     Textarea,
+    Link
   } from '@chakra-ui/react';
   import {
     MdPhone,
@@ -24,7 +25,7 @@ import {
     MdFacebook,
     MdOutlineEmail,
   } from 'react-icons/md';
-  import { BsGithub, BsDiscord, BsPerson } from 'react-icons/bs';
+  import { BsGithub, BsPerson, BsTelegram, BsWhatsapp } from 'react-icons/bs';
   
   export default function Form() {
     return (
@@ -83,30 +84,26 @@ import {
                       spacing={5}
                       px={5}
                       alignItems="flex-start">
+                      <Link  href="https://t.me/swadhinbiswas" target="_blank">
                       <IconButton
-                        aria-label="facebook"
+                        aria-label="telegram"
                         variant="ghost"
                         size="lg"
                         isRound={true}
                         _hover={{ bg: '#0D74FF' }}
-                        icon={<MdFacebook size="28px" />}
+                        icon={<BsTelegram size="28px" />}
                       />
+                      </Link>
+                      <Link  href="https://api.whatsapp.com/send?phone=8801928034856" target="_blank">
                       <IconButton
-                        aria-label="github"
+                        aria-label="whatsapp"
                         variant="ghost"
                         size="lg"
                         isRound={true}
                         _hover={{ bg: '#0D74FF' }}
-                        icon={<BsGithub size="28px" />}
+                        icon={<BsWhatsapp size="28px" />}
                       />
-                      <IconButton
-                        aria-label="discord"
-                        variant="ghost"
-                        size="lg"
-                        isRound={true}
-                        _hover={{ bg: '#0D74FF' }}
-                        icon={<BsDiscord size="28px" />}
-                      />
+                      </Link>
                     </HStack>
                   </Box>
                 </WrapItem>
