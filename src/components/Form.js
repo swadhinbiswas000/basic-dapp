@@ -134,16 +134,6 @@ import {
                             <Input type="text" size="md" />
                           </InputGroup>
                         </FormControl>
-                        <FormControl id="name">
-                          <FormLabel>Message</FormLabel>
-                          <Textarea
-                            borderColor="gray.300"
-                            _hover={{
-                              borderRadius: 'gray.300',
-                            }}
-                            placeholder="message"
-                          />
-                        </FormControl>
                         <FormControl id="name" float="right">
                           <Button
                             variant="solid"
