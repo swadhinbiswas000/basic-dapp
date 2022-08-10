@@ -115,21 +115,11 @@ import {
                     <Box m={8} color="#0B0E3F">
                       <VStack spacing={5}>
                         <FormControl id="name">
-                          <FormLabel>Your Name</FormLabel>
+                          <FormLabel>Number of tokens</FormLabel>
                           <InputGroup borderColor="#E0E1E7">
                             <InputLeftElement
                               pointerEvents="none"
                               children={<BsPerson color="gray.800" />}
-                            />
-                            <Input type="text" size="md" />
-                          </InputGroup>
-                        </FormControl>
-                        <FormControl id="name">
-                          <FormLabel>Mail</FormLabel>
-                          <InputGroup borderColor="#E0E1E7">
-                            <InputLeftElement
-                              pointerEvents="none"
-                              children={<MdOutlineEmail color="gray.800" />}
                             />
                             <Input type="text" size="md" />
                           </InputGroup>
