@@ -26,8 +26,13 @@ import {
     MdOutlineEmail,
   } from 'react-icons/md';
   import { BsGithub, BsPerson, BsTelegram, BsWhatsapp } from 'react-icons/bs';
+
+  import {useState, useEffect} from "react";
   
   export default function Form() {
+
+  const [wallet, setWallet] = useState("0x0");
+
     return (
       <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
         <Flex>
@@ -37,9 +42,12 @@ import {
             borderRadius="lg"
             m={{ sm: 4, md: 16, lg: 10 }}
             p={{ sm: 5, md: 5, lg: 16 }}
+            pt={{ sm: 2, md: 5, lg: 7 }}
             >
-            <Heading style={{textAlign:"center"}}
-             m={{ sm: 1, md: 5, lg: 4 }}
+            <Heading 
+              textAlign={'center'}
+              align={'center'}
+              pb={{ sm: 2, md: 5, lg: 7 }}
             >SB Token</Heading>
             <Box p={4}>
               <Wrap spacing={{ base: 20, sm: 3, md: 5, lg: 20 }}>
@@ -56,10 +64,13 @@ import {
                           Connect Wallet
                       </Button>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
-                      Wallet Address:
+                      Wallet Address :
                     </Text>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
-                      {}
+                      {wallet}
+                    </Text>
+                    <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
+                      Balance : {}
                     </Text>
                     <HStack
                       mt={{ lg: 10, md: 10 }}
