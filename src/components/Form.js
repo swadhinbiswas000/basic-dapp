@@ -29,7 +29,7 @@ import {
 
   import sbcontract_abi from "../contract_abi/sb_contract_abi.json";
 
-  const contractAddr = "0x526a4000503c2982e68Bc632A97285F9Dc60d45F";
+  const contractAddr = "0xA846450B48D00582Abe6011faA71F46cEF7b2735";
 
   import {ethers} from "ethers";
 
@@ -39,6 +39,26 @@ import {
 
   const [wallet, setWallet] = useState("0x0");
   const [balance, setBalance] = useState(0);
+  const [connected, setConnected] = useState(false);
+
+  const [value, setValue] = useState(0);
+
+
+  const handleChange = (e)=>{
+    let _value = e.target.value;
+    setValue(_value);
+  }
+
+  const handleSubmit = async ()=>{
+    const provider = new ethers.providers.Web3Provider(window.ethereum);
+    await provider.send("eth_requestAccounts", []);
+    const signer = await provider.getSigner();
+    const contract_sb = new ethers.Contract(contractAddr, sbcontract_abi, signer);
+    // let price = (await contract_sb.getPrice(value))/10 **18;
+    
+    await contract_sb.buyToken(value);
+    // console.log(price);
+  }
 
   const connectWallet = async ()=>{
     const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -50,6 +70,7 @@ import {
 
     setWallet(signerAddress);
     setBalance(Balance);
+    setConnected(true);
   }
 
     return (
@@ -82,7 +103,7 @@ import {
                           _hover={{ border: '2px solid #1C6FEB' }}
                           onClick={connectWallet}
                           >
-                          Connect Wallet
+                          {connected? "Wallet Connected": "Connect Wallet"}
                       </Button>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
                       Wallet Address :
@@ -127,7 +148,14 @@ import {
                       <VStack spacing={5}>
                         <FormControl id="name">
                           <FormLabel>Number of tokens</FormLabel>
-                            <Input type="number" size="md" placeholder='ex.. 500' min="500" max="25000" />
+                            <Input 
+                            type="number" 
+                            size="md" 
+                            placeholder='ex.. 500' 
+                            min="500" max="25000" 
+                            value={value} 
+                            onChange={handleChange}
+                            />
                   
                         </FormControl>
                         <FormControl id="name" float="right">
@@ -138,7 +166,9 @@ import {
                             size="lg"
                             width="100%"
                             color="white"
-                            _hover={{}}>
+                            _hover={{}}
+                            onClick={handleSubmit}
+                            >
                             Buy Token
                           </Button>
                         </FormControl>
