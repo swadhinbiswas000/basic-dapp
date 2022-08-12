@@ -101,6 +101,7 @@ import {
 
     return (
       <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
+        <p style={{color:"black", marginTop:"15px",backgroundColor:"yellow", padding:"8px"}}>Note: This DAPP is developed on Ropsten Testchain. Please add ropsten to buy tokens</p>
         <Flex>
           <Box
             bg="#02054B"
@@ -138,7 +139,7 @@ import {
                       {wallet}
                     </Text>
                     <Text mt={{ sm: 3, md: 3, lg: 5 }} color="white">
-                      Balance : {balance}
+                      Balance : {balance} SB
                     </Text>
                     <HStack
                       mt={{ lg: 10, md: 10 }}
