@@ -45,7 +45,8 @@ import {
 
   const [value, setValue] = useState(0);
 
-  const [txStatus, setTxStatus] = useState(null);
+  const [txStatus, setTxStatus] = useState(false);
+  const [loading, setLoading] = useState(false);
 
 
   const handleChange = (e)=>{
@@ -64,10 +65,13 @@ import {
   let new_val = price.toString();
 
   let tx = await contract_sb.buyToken(value, {value: new_val});
+  
+  setLoading(true);
 
   let result = await tx.wait();
 
   if(result){
+    setLoading(false)
     setTxStatus(true);
   }
 
@@ -194,7 +198,10 @@ import {
                             Buy Token
                           </Button>
                           <Text mt={{ sm: 3, md: 3, lg: 5 }} color="green">
-                            {txStatus? "Transaction Successful": ""}
+                            {txStatus? "Transaction Successful !": ""}
+                          </Text>
+                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="black">
+                            {loading? "Transaction Processing.....": ""}
                           </Text>
                         </FormControl>
                       </VStack>
