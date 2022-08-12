@@ -33,6 +33,8 @@ import {
 
   import {ethers} from "ethers";
 
+  import Web3 from 'web3/dist/web3.min.js'
+
   import {useState, useEffect} from "react";
   
   export default function Form() {
@@ -53,11 +55,22 @@ import {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     await provider.send("eth_requestAccounts", []);
     const signer = await provider.getSigner();
+    const signerAddress = await signer.getAddress();
     const contract_sb = new ethers.Contract(contractAddr, sbcontract_abi, signer);
-    // let price = (await contract_sb.getPrice(value))/10 **18;
-    
-    await contract_sb.buyToken(value);
-    // console.log(price);
+    let price = await contract_sb.getPrice(value);
+
+    let new_val = price.toString();
+
+  await contract_sb.buyToken(value, {value: new_val});
+
+  // await transaction.wait();
+  
+  // const web3 = window.web3
+  // const contract_sb = new web3.eth.Contract(sbcontract_abi, contractAddr);
+  // let new_amount = await contract_sb.methods.getPrice(value).call();
+  // let newVal = web3.utils.tW
+  // await contract_sb.methods.buyToken(value).send({from: signerAddress, value: new_amount});
+ 
   }
 
   const connectWallet = async ()=>{
@@ -72,6 +85,7 @@ import {
     setBalance(Balance);
     setConnected(true);
   }
+
 
     return (
       <Container bg="#9DC4FB" maxW="full" mt={0} centerContent overflow="hidden">
