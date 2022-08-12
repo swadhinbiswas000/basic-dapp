@@ -45,6 +45,8 @@ import {
 
   const [value, setValue] = useState(0);
 
+  const [txStatus, setTxStatus] = useState(null);
+
 
   const handleChange = (e)=>{
     let _value = e.target.value;
@@ -59,9 +61,15 @@ import {
     const contract_sb = new ethers.Contract(contractAddr, sbcontract_abi, signer);
     let price = await contract_sb.getPrice(value);
 
-    let new_val = price.toString();
+  let new_val = price.toString();
 
-  await contract_sb.buyToken(value, {value: new_val});
+  let tx = await contract_sb.buyToken(value, {value: new_val});
+
+  let result = await tx.wait();
+
+  if(result){
+    setTxStatus(true);
+  }
 
   // await transaction.wait();
   
@@ -185,6 +193,9 @@ import {
                             >
                             Buy Token
                           </Button>
+                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="green">
+                            {txStatus? "Transaction Successful": ""}
+                          </Text>
                         </FormControl>
                       </VStack>
                     </Box>
