@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/basic-dapp/static/css/main.5dbafce1.css",
+    "main.js": "/basic-dapp/static/js/main.4b2e7d85.js",
+    "index.html": "/basic-dapp/index.html",
+    "main.5dbafce1.css.map": "/basic-dapp/static/css/main.5dbafce1.css.map",
+    "main.4b2e7d85.js.map": "/basic-dapp/static/js/main.4b2e7d85.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5dbafce1.css",
+    "static/js/main.4b2e7d85.js"
+  ]
+}
