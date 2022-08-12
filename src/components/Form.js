@@ -1,3 +1,9 @@
+import {ethers} from "ethers";
+
+import {useState, useEffect} from "react";
+
+import sbcontract_abi from "../contract_abi/sb_contract_abi.json";
+
 import {
     Container,
     Flex,
@@ -27,17 +33,10 @@ import {
   } from 'react-icons/md';
   import { BsGithub, BsPerson, BsTelegram, BsWhatsapp } from 'react-icons/bs';
 
-  import sbcontract_abi from "../contract_abi/sb_contract_abi.json";
-
-  const contractAddr = "0xA846450B48D00582Abe6011faA71F46cEF7b2735";
-
-  import {ethers} from "ethers";
-
-  import Web3 from 'web3/dist/web3.min.js'
-
-  import {useState, useEffect} from "react";
   
   export default function Form() {
+
+  const contractAddr = "0xA846450B48D00582Abe6011faA71F46cEF7b2735";
 
   const [wallet, setWallet] = useState("0x0");
   const [balance, setBalance] = useState(0);
@@ -174,7 +173,7 @@ import {
                     <Box m={8} color="#0B0E3F">
                       <VStack spacing={5}>
                         <FormControl id="name">
-                          <FormLabel>Number of tokens</FormLabel>
+                          <FormLabel>Number of tokens (min 500, max 25000)</FormLabel>
                             <Input 
                             type="number" 
                             size="md" 
@@ -198,10 +197,10 @@ import {
                             >
                             Buy Token
                           </Button>
-                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="green">
+                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="green" textAlign={'center'}>
                             {txStatus? "Transaction Successful !": ""}
                           </Text>
-                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="black">
+                          <Text mt={{ sm: 3, md: 3, lg: 5 }} color="black" textAlign={'center'}>
                             {loading? "Transaction Processing.....": ""}
                           </Text>
                         </FormControl>
